@@ -24,6 +24,8 @@ import android.content.SharedPreferences;
 import android.provider.Settings;
 import android.text.TextUtils;
 import androidx.preference.PreferenceManager;
+import org.lineageos.settings.device.Touch.util.Utils;
+import org.lineageos.settings.device.Touch.ScreenOffGesture;
 
 public class Startup extends BroadcastReceiver {
 
@@ -60,6 +62,15 @@ public class Startup extends BroadcastReceiver {
         restore(OTGModeSwitch.getFile(), enabled);
         enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_GAME_SWITCH, false);
         restore(GameModeSwitch.getFile(), enabled);
+        enableComponent(context, ScreenOffGesture.class.getName());
+        SharedPreferences screenOffGestureSharedPreferences = context.getSharedPreferences(
+            Utils.PREFERENCES, Activity.MODE_PRIVATE);
+        KernelControl.enableGestures(
+            screenOffGestureSharedPreferences.getBoolean(
+                ScreenOffGesture.PREF_GESTURE_ENABLE, true));
+        KernelControl.enableDt2w(
+            screenOffGestureSharedPreferences.getBoolean(
+                ScreenOffGesture.PREF_DT2W_ENABLE, true));
     }
 
     private boolean hasRestoredTunable(Context context) {

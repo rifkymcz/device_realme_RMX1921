@@ -58,6 +58,15 @@
             </intent-filter>
         </receiver>
 
+        <!-- TouchScreen gestures -->
+        <activity
+            android:name=".Touch.ScreenOffGestureSettings"
+            android:label="@string/screen_off_gestures">
+            <intent-filter>
+                <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
+            </intent-filter>
+        </activity>
+
         <!-- Quick Settings Tiles -->
         <service
             android:name="org.lineageos.settings.device.DCModeTileService"

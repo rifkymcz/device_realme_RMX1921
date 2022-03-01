@@ -46,4 +46,13 @@
             android:summary="@string/otg_mode_summary"
             android:title="@string/otg_mode_title" />
     </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/gestures">
+        <PreferenceScreen
+            android:key="screen_gestures"
+            android:fragment="org.lineageos.settings.device.Touch.ScreenOffGestureSettings"
+            android:summary="@string/gestures_dashboard_summary"
+            android:title="@string/screen_off_gestures" />
+        </PreferenceCategory>
 </PreferenceScreen>
